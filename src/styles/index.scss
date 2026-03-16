@@ -1,5 +1,4 @@
-
-@import './variables.scss';
+@import './variables';
 
 html,
 body {
@@ -35,13 +34,13 @@ body {
 
   &__hand {
     &--minutes {
-      width: 3vmin;
-      height: 20vmin;
-      background-color: #0700ff;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform-origin: 50% 0%;
+      width: 3vmin;
+      height: 20vmin;
+      background-color: #0700ff;
+      transform-origin: 50% 100%;
       animation: move $animation-minutes steps(60) infinite;
     }
 
@@ -52,26 +51,26 @@ body {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform-origin: 50% 0%;
+      transform-origin: 50% 100%;
       animation: move $animation-seconds linear infinite;
     }
   }
 
-  &--speed-up {
-    &__hand--minutes {
-      animation: move calc($animation-minutes / 6) steps(60) infinite;
-    }
-    &__hand--seconds {
-      animation: move calc($animation-seconds / 6) linear infinite;
-    }
+  &--speed-up &__hand--minutes {
+    animation: move calc($animation-minutes / 6) steps(60) infinite;
+  }
+
+  &--speed-up &__hand--seconds {
+    animation: move calc($animation-seconds / 6) linear infinite;
   }
 }
 
 @keyframes move {
   from {
-    transform: translate(-50%) rotate(0deg);
+    transform: translate(-50%, -100%) rotate(0deg);
   }
+
   to {
-    transform: translate(-50%) rotate(360deg);
+    transform: translate(-50%, -100%) rotate(360deg);
   }
 }
