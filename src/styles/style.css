@@ -38,9 +38,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform-origin: 25% 0%;
+  transform-origin: 50% 0%;
   transform: translateX(-50%, 0) rotate(0deg);
-  animation: move 3600s steps(60) infinite;
+  animation: move 600s steps(60) infinite;
 }
 
 .stopwatch__hand--seconds {
@@ -52,12 +52,20 @@ body {
   left: 50%;
   transform-origin: 50% 0%;
   transform: translate(-50%, 0) rotate(0deg);
-  animation: move 60s linear infinite;
+  animation: move 10s linear infinite;
+}
+
+.stopwatch--speed-up__hand--minutes {
+  animation: move 600s steps(60) infinite;
+}
+
+.stopwatch--speed-up__hand--seconds {
+  animation: move 10s linear infinite;
 }
 
 @keyframes move {
   from {
-    transform: rotate(180deg);
+    transform: translateX(-50%, 0) rotate(180deg);
   }
   to {
     transform: rotate(540deg);

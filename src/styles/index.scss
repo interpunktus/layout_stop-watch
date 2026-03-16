@@ -1,3 +1,6 @@
+
+@import './variables.scss';
+
 html,
 body {
   height: 100%;
@@ -38,9 +41,8 @@ body {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform-origin: 25% 0%;
-      transform: translateX(-50%, 0) rotate(0deg);
-      animation: move 3600s steps(60) infinite;
+      transform-origin: 50% 0%;
+      animation: move $animation-minutes steps(60) infinite;
     }
 
     &--seconds {
@@ -51,17 +53,25 @@ body {
       top: 50%;
       left: 50%;
       transform-origin: 50% 0%;
-      transform: translate(-50%, 0) rotate(0deg);
-      animation: move 60s linear infinite;
+      animation: move $animation-seconds linear infinite;
+    }
+  }
+
+  &--speed-up {
+    &__hand--minutes {
+      animation: move calc($animation-minutes / 6) steps(60) infinite;
+    }
+    &__hand--seconds {
+      animation: move calc($animation-seconds / 6) linear infinite;
     }
   }
 }
 
 @keyframes move {
   from {
-    transform: rotate(180deg);
+    transform: translate(-50%) rotate(0deg);
   }
   to {
-    transform: rotate(540deg);
+    transform: translate(-50%) rotate(360deg);
   }
 }
